@@ -22,7 +22,7 @@ collect_task = BashOperator(
     task_id='run_collector_smart',
     bash_command=(
         'cd /home/insid/PycharmProjects/HH_Vacancies_Dashboard_Analyzer && '
-        '.venv/bin/python -m scripts.collector_smart'
+        '.venv/bin/python -m scripts.collector_auto'
     ),
     dag=dag,
 )
