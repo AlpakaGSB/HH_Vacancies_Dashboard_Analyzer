@@ -14,24 +14,22 @@ from scripts.utils import logger
 # ────────────────────────────────────────────────
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-TOKENS_PATH = BASE_DIR / "tokens.json"   # если используешь старый способ
-ENV_TOKEN = os.getenv("HH_ACCESS_TOKEN") # основной способ через .env
+TOKENS_PATH = BASE_DIR / "tokens.json"
+ENV_TOKEN = os.getenv("HH_ACCESS_TOKEN")
 
 # Тестовый ID вакансии
-TEST_VACANCY_ID = "130543348"  # ← замени на реальный из твоего последнего raw-файла
+TEST_VACANCY_ID = "130543348"
 
 HEADERS_PUBLIC = {
     "User-Agent": "HH_Vacancies_Dashboard_Analyzer/test (pet-project)"
 }
 
 def get_token() -> str | None:
-    # 1. Пробуем из .env (основной способ)
     token = os.getenv("HH_ACCESS_TOKEN")
     if token:
         logger.info("Токен взят из переменной окружения (.env)")
         return token
 
-    # 2. Пробуем из tokens.json (старый способ)
     if TOKENS_PATH.is_file():
         try:
             with open(TOKENS_PATH, encoding="utf-8") as f:
