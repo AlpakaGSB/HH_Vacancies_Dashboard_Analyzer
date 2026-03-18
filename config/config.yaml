@@ -1,0 +1,41 @@
+# Основные настройки проекта
+
+project:
+  name: HH Vacancies Dashboard Analyzer
+  version: 0.1.0
+
+collection:
+  area: "1"                     # Москва
+  per_page: 100
+  max_pages_per_search: 20
+
+professions:
+  it:
+    queries:
+      - data analyst
+      - аналитик данных
+      - python developer
+      - data scientist
+      - backend developer
+      - frontend developer
+  courier:
+    queries:
+      - курьер
+      - курьер пеший
+      - курьер на авто
+      - курьер на электросамокате
+      - курьер на велосипеде
+
+enrichment:
+  max_per_run: 220
+  sleep_base: 0.45
+  sleep_jitter: 0.35
+
+database:
+  schema: public
+  tables:
+    raw_vacancies: raw_vacancies
+    vacancies: vacancies
+
+grafana:
+  dashboard_title: "HH Market Pulse - IT vs Курьеры"
